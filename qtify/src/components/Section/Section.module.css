@@ -1,11 +1,11 @@
 .section {
     /* padding: 20px;
     padding: 0 32px; */
-    max-width: 1200px;
+    max-width: 1300px;
   margin: 0 auto;
   padding: 0 16px;
     color: white;
-    border-bottom: 1px solid var(--color-primary);
+    margin-top: 35px;
   }
   
   .header {
@@ -25,3 +25,5 @@
     flex-wrap: wrap;
     gap: 24px;
   }
+
+  

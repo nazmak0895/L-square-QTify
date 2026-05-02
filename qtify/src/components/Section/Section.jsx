@@ -8,15 +8,16 @@ export default function Section({ title, endpoint }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await axios.get(endpoint);
-        setData(res.data);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    fetchData();
+    const timer = setTimeout(() => {
+      axios
+        .get(endpoint)
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => console.log(e));
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [endpoint]);
 
   const displayedData = collapse ? data.slice(0, 7) : data;
@@ -26,11 +27,15 @@ export default function Section({ title, endpoint }) {
       <div className={styles.header}>
         <h2>{title}</h2>
         <p
-          className={styles.collapse}
-          onClick={() => setCollapse(!collapse)}
-        >
-          {collapse ? "Show All" : "Collapse"}
-        </p>
+  className={styles.collapse}
+  onClick={() => setCollapse(!collapse)}
+>
+  {title === "Top Albums"
+    ? "Collapse"
+    : collapse
+    ? "Show All"
+    : "Collapse"}
+</p>
       </div>
 
       <div className={styles.grid}>
