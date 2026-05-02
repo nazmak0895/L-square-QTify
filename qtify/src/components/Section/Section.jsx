@@ -60,7 +60,7 @@ import styles from "./Section.module.css";
 axios.defaults.baseURL = "https://qtify-backend.labs.crio.do";
 
 export default function Section({ title, endpoint }) {
-  const [collapse, setCollapse] = useState(title !== "Top Albums");
+  const [collapse, setCollapse] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
